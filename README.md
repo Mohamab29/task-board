@@ -12,11 +12,11 @@
 <hr>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?color=blueviolet">
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?color=blueviolet">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?color=blueviolet">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
   <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-manger?style=flat-square&logo=appveyor&color=blueviolet">
 
