@@ -1,8 +1,8 @@
 
-<h1 align="center" id="top">Task Manger</h1>
+<h1 align="center" id="top">Task Board</h1>
 
 <div align="center" > 
-  <img src="assets/images/website-mockup.jpg" alt="Task Manger" 
+  <img src="assets/images/website-mockup.jpg" alt="Task Board" 
   />
 
   &#xa0;
@@ -12,24 +12,24 @@
 <hr>
 
 <p align="center">
-    <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
-    <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
     <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+    <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
+    <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
     <br>
-    <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-board?style=flat-square&color=blueviolet">
     &#xa0;
-    <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-board?style=flat-square&color=blueviolet">
      &#xa0;
-    <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-board?style=flat-square&color=blueviolet">
     &#xa0;
-    <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-manger?style=flat-square&logo=appveyor&color=blueviolet">
+    <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-board?style=flat-square&logo=appveyor&color=blueviolet">
 
 </p>
 
 <!-- Status -->
 
 <h4 align="center"> 
-	🚧  Task Manger 📓 is under construction...  🚧
+	🚧  Task Board 📓 is under construction...  🚧
 </h4> 
 
 <hr>
@@ -47,9 +47,9 @@
 
 ## :dart: About ##
 
-Task Manger website is the first project in my full-stack course and the purpose of it is to use all the things we learned about front-end design in a web page using HTML,CSS3 and JavaScript.
+Task Board website is the first project in my full-stack course and the purpose of it is to use all the things we learned about front-end design in a web page using HTML,CSS3 and JavaScript.
 
-In the website a user can enter to do tasks in the task board , after that a yellow card will be automatically shown with the all the task text in it and also the date and time at the moment it was written, and if a user is done with a task he can simply delete it,and of course he can as many tasks as he wants .
+In the website a user can enter to do tasks in the task board and the time for the task to be completed , after that a yellow card will be automatically shown with the all the task text in it with the date and time of the , and if a user is done with a task he can simply delete it,and of course he can as many tasks as he wants .
 
 Since this is just a front-end design the website will not have any back-end development in it
 , instead the tasks will be saved locally on the user's local machine using Local Storage . 
@@ -71,10 +71,10 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) , 
 
 ```bash
 # Clone this project
-$ git clone https://github.com/Mohamab29/task-manger
+$ git clone https://github.com/Mohamab29/task-board
 
 # Access
-$ cd task-manger
+$ cd task-board
 
 $ code .
 
