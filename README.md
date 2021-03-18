@@ -26,7 +26,7 @@
 <!-- Status -->
 
 <h4 align="center"> 
-	🚧  Task Manger 🚀 Under construction...  🚧
+	🚧  Task Manger 📝 is under construction...  🚧
 </h4> 
 
 <hr>
