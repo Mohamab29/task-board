@@ -12,14 +12,17 @@
 <hr>
 
 <p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
+    <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/>
+    <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
+    <br>
+    <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
-  <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?style=flat-square&color=blueviolet">
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?style=flat-square&color=blueviolet">
 
-  <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-manger?style=flat-square&logo=appveyor&color=blueviolet">
-
+    <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-manger?style=flat-square&logo=appveyor&color=blueviolet">
 
 </p>
 
