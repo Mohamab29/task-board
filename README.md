@@ -1,7 +1,7 @@
 
-<h1 align="center">Task Manger</h1>
+<h1 align="center" id="top">Task Manger</h1>
 
-<div align="center" id="top"> 
+<div align="center" > 
   <img src="assets/images/website-mockup.jpg" alt="Task Manger" 
   />
 
@@ -26,7 +26,7 @@
 <!-- Status -->
 
 <h4 align="center"> 
-	🚧  Task Manger 📝 is under construction...  🚧
+	🚧  Task Manger 📓 is under construction...  🚧
 </h4> 
 
 <hr>
