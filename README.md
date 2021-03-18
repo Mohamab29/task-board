@@ -32,8 +32,7 @@
 <hr>
 
 <p align="center">
-  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#dart-about">About</a> &#xa0; | &#xa0;
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
@@ -47,16 +46,11 @@
 
 Task Manger website is the first project in my full-stack course and the purpose of it is to use all the things we learned about front-end design in a web page using HTML,CSS3 and JavaScript.
 
-In the website a user can enter to do tasks in the task board , after that a yellow card will be automatically shown with the all the task text in it and also the date and time at the moment it was written, and if a user is done with task he can simply delete it.
+In the website a user can enter to do tasks in the task board , after that a yellow card will be automatically shown with the all the task text in it and also the date and time at the moment it was written, and if a user is done with a task he can simply delete it,and of course he can as many tasks as he wants .
 
 Since this is just a front-end design the website will not have any back-end development in it
 , instead the tasks will be saved locally on the user's local machine using Local Storage . 
 
-## :sparkles: Features ##
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
 
 ## :rocket: Technologies ##
 
