@@ -17,11 +17,11 @@
     <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
     <br>
     <img alt="Github top language" src="https://img.shields.io/github/languages/top/Mohamab29/task-manger?style=flat-square&color=blueviolet">
-
+    &#xa0;
     <img alt="Github language count" src="https://img.shields.io/github/languages/count/Mohamab29/task-manger?style=flat-square&color=blueviolet">
-
+     &#xa0;
     <img alt="Repository size" src="https://img.shields.io/github/repo-size/Mohamab29/task-manger?style=flat-square&color=blueviolet">
-
+    &#xa0;
     <img alt="License" src="https://img.shields.io/github/license/Mohamab29/task-manger?style=flat-square&logo=appveyor&color=blueviolet">
 
 </p>
