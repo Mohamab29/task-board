@@ -1,0 +1,30 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("assets/images/tile.jpg");
+}
+
+#title-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.form-container {
+    display: grid;
+    position: relative;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+textarea {
+    background: url("assets/images/formbg.jpg");
+    height: 200px;
+    width: 600px;
+    resize: none;
+}
+
