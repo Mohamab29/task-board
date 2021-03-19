@@ -1,38 +1,39 @@
-body, html {
-    margin: 0;
-    padding: 0;
-}
 
 body {
     background-image: url("assets/images/crumpled-white-paperboard.jpg");
 }
 
-#title-img{
-    display: block;
+#title-img {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
 }
 
 .form-container {
-    display: grid;
     position: relative;
     margin-top: 50px;
     justify-content: center;
 }
 
 #form-text {
-    /* background: url("assets/images/formbg.jpg"); */
     height: 200px;
     width: 600px;
     resize: none;
-    font-family: 'Josefin Sans', sans-serif;  
-    font-weight:bold;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
     font-size: x-large;
-    opacity: 0.8;
-
+    opacity: 0.6;
 }
 
-#mySpan{
+.container-fluid {
+    margin: 0 100px;
+}
+.task-card{
+    width: 250px;
+    height: 250px;
+    border: 2px solid black;
+    overflow: auto;
+    margin: 2px;
+    display:inline-block !important;
 
 }
