@@ -4,10 +4,10 @@ body, html {
 }
 
 body {
-    background-image: url("assets/images/tile.jpg");
+    background-image: url("assets/images/crumpled-white-paperboard.jpg");
 }
 
-#title-img {
+#title-img{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -21,10 +21,18 @@ body {
     justify-content: center;
 }
 
-textarea {
-    background: url("assets/images/formbg.jpg");
+#form-text {
+    /* background: url("assets/images/formbg.jpg"); */
     height: 200px;
     width: 600px;
     resize: none;
+    font-family: 'Josefin Sans', sans-serif;  
+    font-weight:bold;
+    font-size: x-large;
+    opacity: 0.8;
+
 }
 
+#mySpan{
+
+}
