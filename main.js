@@ -1,7 +1,3 @@
-// function selectText() {
-//     const myTextArea = document.getElementById('form-text');
-//     myTextArea.selectionStart = 11;
-// }
 function addNote(){
     /*
     this function gets activated whenever an add note button is clicked.
@@ -22,10 +18,33 @@ function addNote(){
     const dateAndTimeArray = dateAndTime.split("T") // separating the date and time because it is in this form: "dateTtime"   
     // our array is now in length of 2
 
-    notesBoard.innerHTML += `<div class="task-card">
+    const id = saveToLocalStorage(noteText,dateAndTimeArray[0],dateAndTimeArray[1]);
+    notesBoard.innerHTML += `<div class="task-card" id="${id}">
     ${noteText}
     <br>
     ${dateAndTimeArray[0]},${dateAndTimeArray[1]}
     </div>`;
+}
+
+function saveToLocalStorage(noteText,noteDate,noteTime){
+    const noteId = Math.random().toString(36).substr(2);
+    const note = {
+        nid:noteId,
+        body:noteText,
+        date:noteDate,
+        time:noteTime
+    }
+    let notes = [];
+    const jsonArray = localStorage.getItem("notes");
+    if (jsonArray) {
+        notes = JSON.parse(jsonArray);
+    }
+
+    notes.push(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
+    return noteId;
 
 }
+
+
+console.log(Math.random().toString(36).substr(2));
