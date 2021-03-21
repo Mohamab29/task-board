@@ -34,15 +34,14 @@
 
         <div class="row d-flex justify-content-center m-2">
             <div class="col d-flex justify-content-center">
-                <button type="button" class="btn btn-outline-info ">Add note</button>
-                <input type="datetime-local" id="date-time-input" class="btn btn-outline-info"
-                    onchange="showDate()">
+                <button type="button" class="btn btn-outline-info " onclick="addNote()">Add note</button>
+                <input type="datetime-local" id="date-time-input"  class="btn btn-outline-info">
             </div>
         </div>
 
 
 
-        <div class="row m-5 card-content">
+        <div class="row m-5 card-content" id="notes-board">
             <!-- <div class="col-6 d-flex justify-content-center "> -->
             <!-- <div class="col"> -->
                 <div class="task-card">
