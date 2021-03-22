@@ -2,12 +2,14 @@ function showNote(note) {
     const notesBoard = document.getElementById("notes-board");
     notesBoard.innerHTML += `
     <div class="note" id="${note.nid}">
+        <i class="fa fa-minus offset-9" onclick="deleteNote(${note.nid})" display aria-hidden="true"></i>
         <div class="note-body">
-        ${note.body}
+                ${note.body}
         </div>
         <div class="row note-footer">
-            ${note.date} - ${note.time}
-            <i class="fa fa-minus offset-4" onclick="deleteNote(${note.nid})" aria-hidden="true"></i>
+            ${note.date}
+            <br>
+            ${note.time}    
         </div>
     </div>
     `;
@@ -25,8 +27,7 @@ function validateDate(date) {
         month: parseInt(dateArray[1]),
         day: parseInt(dateArray[2])
     }
-    console.log(dateObject);
-    console.log(currDateObject);
+
     if (dateObject.year < currDateObject.year) {
         alert("The date of the note can't be before the current year");
         return false;
@@ -120,6 +121,8 @@ function onLoad() {
     }
 }
 function deleteNote(noteDiv) {
+    //the noteDiv is the parent element of the whole note, we take it's id and remove it from local storage and remove the element from the
+    // body of the page. 
     deleteFromLocalStorage(noteDiv.id);
     noteDiv.remove();
 }

@@ -32,35 +32,46 @@ body {
     justify-content: center;
 }
 
-.note-body {
-    width: 250px;
-    height: 250px;
-    border: 2px solid black;
-    overflow: auto;
-    display: inline-block !important;
-}
-
 .note {
+    width: 300px;
+    height: 400px;
     display: grid;
     grid-template-columns: 1fr;
     margin: 30px;
-    justify-content:center;
+    justify-content: center;
+    background: url("assets/images/notebg.png");
+    background-size: 300px 400px;
+}
+
+div:hover>i {
+    opacity: 1.0;
+}
+
+.note-body {
+    width: 270px;
+    height: 280px;
+    overflow: auto;
+    display: inline-block !important;
+    margin-left: 4px;
+    margin-bottom: 0px;
 }
 
 .note-footer {
     width: 250px;
-    height: 30px;
-    margin-left: 0px;
-    border: 2px solid black;
+    height: 40px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    font-weight: bolder;
+    font-size: 20px;
 }
 
 .fa-minus {
+    opacity: 0.0;
     color: red;
-    margin-top: 5px;
+    margin-top: 10px;
+    height: 20px;
+    font-size: 30px;
+    transition: all 500ms ease-in-out;
 }
 
-.fa-minus:hover {
-    margin-top: 0;
-    font-size: 30px;
-    color: red;
-}
