@@ -1,13 +1,13 @@
 function showNote(note) {
     const notesBoard = document.getElementById("notes-board");
     notesBoard.innerHTML += `
-    <div class="note">
-        <div class="note-body" id="${note.nid}">
+    <div class="note" id="${note.nid}">
+        <div class="note-body">
         ${note.body}
         </div>
         <div class="row note-footer">
             ${note.date} - ${note.time}
-            <i class="fa fa-minus offset-4" aria-hidden="true"></i>
+            <i class="fa fa-minus offset-4" onclick="deleteNote(${note.nid})" aria-hidden="true"></i>
         </div>
     </div>
     `;
@@ -74,11 +74,19 @@ function addNote() {
     }
 
 }
+function createId() {
 
+    let randomSmallLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // because an id in an element can't have a number as a first letter 
+    //so we need the first values in the id to be a letter
+    console.log();
+    return randomSmallLetter + Math.random().toString(36).substr(2);
+
+}
 function saveToLocalStorage(noteText, noteDate, noteTime) {
 
     // giving each note a unique id so it can be used later,e.g.:removal of the note. 
-    const noteId = Math.random().toString(36).substr(2);
+    const noteId = createId();
+
 
 
     const note = {
@@ -110,5 +118,25 @@ function onLoad() {
     for (const note of notes) {
         showNote(note)
     }
+}
+function deleteNote(noteDiv) {
+    deleteFromLocalStorage(noteDiv.id);
+    noteDiv.remove();
+}
+function deleteFromLocalStorage(id) {
+    const jsonArray = localStorage.getItem("notes");
+    if (!jsonArray) return;
+    const notes = JSON.parse(jsonArray);
+
+    for (const note of notes) {
+        if (note.nid == id) {
+            const index = notes.indexOf(note);
+            if (index > -1) {
+                notes.splice(index, 1);
+            }
+        }
+    }
+    localStorage.removeItem("notes");
+    localStorage.setItem("notes", JSON.stringify(notes));
 }
 onLoad()
