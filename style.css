@@ -43,10 +43,6 @@ body {
     background-size: 300px 400px;
 }
 
-div:hover>i {
-    opacity: 1.0;
-}
-
 .note-body {
     width: 270px;
     height: 280px;
@@ -75,3 +71,6 @@ div:hover>i {
     transition: all 500ms ease-in-out;
 }
 
+div:hover>i {
+    opacity: 1.0;
+}
