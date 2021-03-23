@@ -1,15 +1,14 @@
-function clearForm(){
+function clearForm() {
     document.getElementById("form-text").value = "";
     document.getElementById("date-input").value = "";
     document.getElementById("time-input").value = "";
 }
 
-function showNote(note) {
+function showOnLoadNotes(note) {
     const notesBoard = document.getElementById("notes-board");
-
     notesBoard.innerHTML += `
     <div class="note" id="${note.nid}">
-        <i class="fa fa-minus" onclick="deleteNote(${note.nid})" display aria-hidden="true"></i>
+        <i class="fa fa-minus" onclick="deleteNote(${note.nid})" ></i>
         <div class="note-body">
                 ${note.body}
         </div>
@@ -21,6 +20,34 @@ function showNote(note) {
     </div>
     `;
 }
+function showNote(note) {
+    //creating note element
+    const noteDiv = document.createElement("Div");
+    noteDiv.className = "note";
+    noteDiv.id = note.nid;
+
+    //adding glyph icon to the note
+    const glyphIcon = document.createElement("i");
+    glyphIcon.classList.add("fa", "fa-minus");
+    glyphIcon.setAttribute("onclick", `deleteNote(${note.nid})`)
+    noteDiv.appendChild(glyphIcon);
+
+    //adding the body of the note
+    const noteBody = document.createElement("Div");
+    noteBody.className = ("note-body");
+    noteBody.innerHTML = note.body;
+    noteDiv.appendChild(noteBody);
+
+    //adding the footer of the note
+    const noteFooter = document.createElement("Div");
+    noteFooter.classList.add("row", "note-footer");
+    noteFooter.innerHTML = `${note.date}<br>${note.time}`;
+    noteDiv.appendChild(noteFooter);
+
+    const notesBoard = document.getElementById("notes-board");
+    notesBoard.appendChild(noteDiv);
+}
+
 function validateDate(date) {
     const currentDate = new Date();
     const currDateObject = {
@@ -77,7 +104,7 @@ function addNote() {
         const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
         document.getElementById("form-text").value = "";
-    
+
     }
 
 }
@@ -123,9 +150,9 @@ function onLoad() {
     const notes = JSON.parse(jsonArray);
 
     for (const note of notes) {
-        showNote(note)
+        showOnLoadNotes(note)
     }
-    
+
 
 }
 function deleteNote(noteDiv) {
