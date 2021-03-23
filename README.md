@@ -2,7 +2,7 @@
 <h1 align="center" id="top">Task Board</h1>
 
 <div align="center" > 
-  <img src="assets/images/website-mockup.jpg" alt="Task Board" 
+  <img src="assets/images/mockup.jpg" alt="Task Board" 
   />
 
   &#xa0;
