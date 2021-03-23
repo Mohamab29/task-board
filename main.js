@@ -54,23 +54,23 @@ function addNote() {
     and if the time to finish is added if not it will notify the user that he should a finish date and time, and press again. 
     */
     const noteText = document.getElementById("form-text").value;
-    const dateAndTime = document.getElementById("date-time-input").value;
+    const dateInput = document.getElementById("date-input").value;
+    const timeInput = document.getElementById("time-input").value;
+    console.log(dateInput);
+    console.log(timeInput);
+
 
     if (noteText === "") {
-        alert("You can't add an empty note!\nPlease enter a text in the box and don't forget to choose time and date :)");
+        alert("You can't add an empty note!\nPlease enter a text in the box and don't forget to a due date :)");
         return;
     }
-    if (dateAndTime === "") {
-        alert("in order to add your note to the board, you will need to choose a date and time of when you will finish this task");
+    if (dateInput === "") {
+        alert("in order to add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
         return;
     }
-    // separating the date and time because it is in this form: "date T time"   
-    // our array is now in length of 2
-
-    const dateAndTimeArray = dateAndTime.split("T")
-    const checkDate = validateDate(dateAndTimeArray[0]);
+    const checkDate = validateDate(dateInput);
     if (checkDate) {
-        const note = saveToLocalStorage(noteText, dateAndTimeArray[0], dateAndTimeArray[1]);
+        const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
     }
 
@@ -119,6 +119,8 @@ function onLoad() {
     for (const note of notes) {
         showNote(note)
     }
+    
+
 }
 function deleteNote(noteDiv) {
     //the noteDiv is the parent element of the whole note, we take it's id and remove it from local storage and remove the element from the

@@ -1,5 +1,5 @@
 body {
-    background-image: url("assets/images/crumpled-white-paperboard.jpg");
+    background-image: url("assets/images/tile.jpg");
     width: auto;
 }
 
@@ -21,9 +21,13 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
     font-size: x-large;
-    opacity: 0.6;
-}
+    background:url("assets/images/formbg.jpg");
 
+}
+.form-buttons{
+    /* width: 800px; */
+    justify-content:space-evenly; 
+} 
 .title {
     margin: 0 auto;
 }
