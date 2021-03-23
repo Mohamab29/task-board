@@ -5,12 +5,15 @@ function clearForm() {
 }
 
 function showOnLoadNotes(note) {
-    const notesBoard = document.getElementById("notes-board");
-    notesBoard.innerHTML += `
+    //if the task is from yesterday
+    if (validateDate(note.date, false)) {
+        const notesBoard = document.getElementById("notes-board");
+        note.body = note.body.replaceAll("\n", "<br>");//FOR ADDING NEW LINE
+        notesBoard.innerHTML += `
     <div class="note" id="${note.nid}">
         <i class="fa fa-minus" onclick="deleteNote(${note.nid})" ></i>
         <div class="note-body">
-                ${note.body}
+            ${note.body}
         </div>
         <div class="row note-footer">
             ${note.date}
@@ -19,6 +22,10 @@ function showOnLoadNotes(note) {
         </div>
     </div>
     `;
+    }
+    else {
+        return;
+    }
 }
 function showNote(note) {
     //creating note element
@@ -35,6 +42,7 @@ function showNote(note) {
     //adding the body of the note
     const noteBody = document.createElement("Div");
     noteBody.className = ("note-body");
+    note.body = note.body.replaceAll("\n", "<br>");//FOR ADDING NEW LINE
     noteBody.innerHTML = note.body;
     noteDiv.appendChild(noteBody);
 
@@ -48,7 +56,7 @@ function showNote(note) {
     notesBoard.appendChild(noteDiv);
 }
 
-function validateDate(date) {
+function validateDate(date, showAlert) {
     const currentDate = new Date();
     const currDateObject = {
         year: parseInt(currentDate.getFullYear()),
@@ -63,17 +71,23 @@ function validateDate(date) {
     }
 
     if (dateObject.year < currDateObject.year) {
-        alert("The date of the note can't be before the current year");
+        if (showAlert) {
+            alert("The date of the note can't be before the current year");
+        }
         return false;
     }
     else if (dateObject.year === currDateObject.year) {
         if (dateObject.month < currDateObject.month) {
-            alert("The date of the note can't be before the current month");
+            if (showAlert) {
+                alert("The date of the note can't be before the current month");
+            }
             return false;
         }
         else if (dateObject.month === currDateObject.month) {
             if (dateObject.day < currDateObject.day) {
-                alert("The date of the note can't be before the current day");
+                if (showAlert) {
+                    alert("The date of the note can't be before the current day");
+                }
                 return false;
             }
         }
@@ -99,11 +113,11 @@ function addNote() {
         alert("in order to add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
         return;
     }
-    const checkDate = validateDate(dateInput);
+    const checkDate = validateDate(dateInput, true);
     if (checkDate) {
         const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
-        document.getElementById("form-text").value = "";
+        clearForm();
 
     }
 
@@ -150,7 +164,7 @@ function onLoad() {
     const notes = JSON.parse(jsonArray);
 
     for (const note of notes) {
-        showOnLoadNotes(note)
+        showOnLoadNotes(note);
     }
 
 

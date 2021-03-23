@@ -29,6 +29,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
     font-size: x-large;
+    box-sizing: border-box;
     background:url("assets/images/formbg.jpg");
 
 }

@@ -26,12 +26,6 @@
 
 </p>
 
-<!-- Status -->
-
-<h4 align="center"> 
-	🚧  Task Board 📓 is under construction...  🚧
-</h4> 
-
 <hr>
 
 <p align="center">
@@ -54,6 +48,11 @@ In the website a user can enter to do tasks in the task board and the time for t
 Since this is just a front-end design the website will not have any back-end development in it
 , instead the tasks will be saved locally on the user's local machine using Local Storage . 
 
+## :sparkles: Features ##
+
+:heavy_check_mark: being able to see the task notes on th task board; \
+:heavy_check_mark: entering a new task note; \
+:heavy_check_mark: deleting the task/s;
 
 ## :rocket: Technologies ##
 
