@@ -3,9 +3,17 @@ body {
     width: auto;
 }
 
-#title-img {
+@font-face {
+    src: url("assets/fonts/Sriracha-Regular.ttf");
+    font-family: titleFont; 
+}
+
+#board-title {
     margin-left: auto;
     margin-right: auto;
+    font-weight: bold;
+    font-size:56px;
+    font-family: titleFont,'Tillana', cursive;
 }
 
 .form-container {
@@ -35,7 +43,9 @@ body {
 .container-fluid {
     justify-content: center;
 }
-
+#note-board{
+    margin-left: 200px !important;
+}
 .note {
     width: 300px;
     height: 400px;
@@ -45,8 +55,22 @@ body {
     justify-content: center;
     background: url("assets/images/notebg.png");
     background-size: 300px 400px;
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: both;
 }
 
+  
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+
+@font-face {
+    src: url("assets/fonts/PatrickHand-Regular.ttf");
+    font-family: noteFont; 
+}
 .note-body {
     width: 270px;
     height: 280px;
@@ -54,6 +78,9 @@ body {
     display: inline-block !important;
     margin-left: 4px;
     margin-bottom: 0px;
+    font-family:noteFont, Geneva, Tahoma, sans-serif;
+    font-weight:bold;
+    font-size: 18px;
 }
 
 .note-footer {
@@ -73,6 +100,7 @@ body {
     height: 20px;
     font-size: 30px;
     transition: all 500ms ease-in-out;
+    margin-left: 250px;
 }
 
 div:hover>i {

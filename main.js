@@ -1,8 +1,15 @@
+function clearForm(){
+    document.getElementById("form-text").value = "";
+    document.getElementById("date-input").value = "";
+    document.getElementById("time-input").value = "";
+}
+
 function showNote(note) {
     const notesBoard = document.getElementById("notes-board");
+
     notesBoard.innerHTML += `
     <div class="note" id="${note.nid}">
-        <i class="fa fa-minus offset-9" onclick="deleteNote(${note.nid})" display aria-hidden="true"></i>
+        <i class="fa fa-minus" onclick="deleteNote(${note.nid})" display aria-hidden="true"></i>
         <div class="note-body">
                 ${note.body}
         </div>
@@ -56,9 +63,6 @@ function addNote() {
     const noteText = document.getElementById("form-text").value;
     const dateInput = document.getElementById("date-input").value;
     const timeInput = document.getElementById("time-input").value;
-    console.log(dateInput);
-    console.log(timeInput);
-
 
     if (noteText === "") {
         alert("You can't add an empty note!\nPlease enter a text in the box and don't forget to a due date :)");
@@ -72,6 +76,8 @@ function addNote() {
     if (checkDate) {
         const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
+        document.getElementById("form-text").value = "";
+    
     }
 
 }
