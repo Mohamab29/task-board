@@ -79,7 +79,7 @@ $ code .
 
 ```
 
-After opening the folder in VS Code , right click on the index folder and then click on open with live server after that your default browser will pop-up with the website being fully live locally on your machine .
+After opening the folder in VS Code , right click on the index.html folder and then click on open with live server after that your default browser will pop-up with the website being fully live locally on your machine .
 
 ## :memo: License ##
 
