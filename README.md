@@ -44,10 +44,10 @@
 
 Task Board website is the first project in my full-stack course and the purpose of it is to use all the things we learned about front-end design in a web page using HTML,CSS3 and JavaScript.
 
-In the website a user can enter to do tasks in the task board and the time for the task to be completed , after that a yellow card will be automatically shown with all the task text in it with the target date and time , and if a user is done with a task he can simply delete it,and of course he can add as many tasks as he wants .
+In the website a user can enter to do tasks in the task board and the time for the task to be completed , after that a yellow card will be automatically shown with all the task text in it with the target date and time , and if a user is done with a task he can simply delete it,and of course he can add as many tasks as he wants.
 
 Since this is just a front-end design the website will not have any back-end development in it
-, instead the tasks will be saved locally on the user's local machine using Local Storage . 
+, instead the tasks will be saved locally on the user's local machine using Local Storage. 
 
 ## :sparkles: Features ##
 
@@ -80,11 +80,11 @@ $ code .
 
 ```
 
-After opening the folder in VS Code , right click on the index.html folder and then click on open with live server after that your default browser will pop-up with the website being fully live locally on your machine .
+After opening the folder in VS Code , right click on the index.html folder and then click on open with live server after that your default browser will pop-up with the website being fully live locally on your machine.
 
 ## :memo: License ##
 
-This project is under license from Apache 2.0 .
+This project is under license from Apache 2.0.
 For more details, see the [LICENSE](LICENSE) file.
 
 
