@@ -3,17 +3,21 @@ body {
     width: auto;
 }
 
+.container-fluid {
+    justify-content: center;
+}
+
 @font-face {
     src: url("assets/fonts/Sriracha-Regular.ttf");
-    font-family: titleFont; 
+    font-family: titleFont;
 }
 
 #board-title {
     margin-left: auto;
     margin-right: auto;
     font-weight: bold;
-    font-size:56px;
-    font-family: titleFont,'Tillana', cursive;
+    font-size: 56px;
+    font-family: titleFont, 'Tillana', cursive;
 }
 
 .form-container {
@@ -25,28 +29,23 @@ body {
 #form-text {
     height: 200px;
     width: 600px;
+    word-break: break-word;
     resize: none;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
     font-size: x-large;
     box-sizing: border-box;
-    background:url("assets/images/formbg.jpg");
-
-}
-.form-buttons{
-    /* width: 800px; */
-    justify-content:space-evenly; 
-} 
-.title {
-    margin: 0 auto;
+    background: url("assets/images/formbg.jpg");
 }
 
-.container-fluid {
-    justify-content: center;
+.form-buttons {
+    justify-content: space-evenly;
 }
-#note-board{
+
+#note-board {
     margin-left: 200px !important;
 }
+
 .note {
     width: 300px;
     height: 400px;
@@ -61,17 +60,20 @@ body {
     animation-fill-mode: both;
 }
 
-  
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
- }
- 
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 @font-face {
     src: url("assets/fonts/PatrickHand-Regular.ttf");
-    font-family: noteFont; 
+    font-family: noteFont;
 }
+
 .note-body {
     width: 270px;
     height: 280px;
@@ -79,8 +81,8 @@ body {
     display: inline-block !important;
     margin-left: 4px;
     margin-bottom: 0px;
-    font-family:noteFont, Geneva, Tahoma, sans-serif;
-    font-weight:bold;
+    font-family: noteFont, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     font-size: 18px;
 }
 

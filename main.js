@@ -1,12 +1,55 @@
-function clearForm() {
-    document.getElementById("form-text").value = "";
-    document.getElementById("date-input").value = "";
-    document.getElementById("time-input").value = "";
-}
+function validateDate(date) {
+    const currentDate = new Date();
+    const currentDateObject = {
+        year: parseInt(currentDate.getFullYear()),
+        month: parseInt(currentDate.getMonth() + 1),
+        day: parseInt(currentDate.getDate())
+    }
+    const dateArray = date.split("-")
+    const dateObject = {
+        year: parseInt(dateArray[0]),
+        month: parseInt(dateArray[1]),
+        day: parseInt(dateArray[2])
+    }
 
+    if (dateObject.year < currentDateObject.year) {
+        return false;
+    }
+    else if (dateObject.year === currentDateObject.year) {
+        if (dateObject.month < currentDateObject.month) {
+            return false;
+        }
+        else if (dateObject.month === currentDateObject.month) {
+            if (dateObject.day < currentDateObject.day) {
+
+                return false;
+            }
+        }
+    }
+    return true;
+}
+function validateTime(time) {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
+
+    const [hour, minutes] = time.split(":");
+    const [intHour, intMinutes] = [parseInt(hour), parseInt(minutes)];
+
+    if (currentHour > intHour) {
+        return false;
+    }
+    else if (currentHour == intHour) {
+        if (currentMinutes > intMinutes) {
+            return false;
+        }
+    }
+    return true;
+
+}
 function showOnLoadNotes(note) {
     //if the task is from yesterday
-    if (validateDate(note.date, false)) {
+    if (validateDate(note.date) && validateTime(note.time)) {
         const notesBoard = document.getElementById("notes-board");
         note.body = note.body.replaceAll("\n", "<br>");//FOR ADDING NEW LINE
         notesBoard.innerHTML += `
@@ -24,6 +67,7 @@ function showOnLoadNotes(note) {
     `;
     }
     else {
+        deleteFromLocalStorage(note.nid);
         return;
     }
 }
@@ -56,43 +100,11 @@ function showNote(note) {
     notesBoard.appendChild(noteDiv);
 }
 
-function validateDate(date, showAlert) {
-    const currentDate = new Date();
-    const currDateObject = {
-        year: parseInt(currentDate.getFullYear()),
-        month: parseInt(currentDate.getMonth() + 1),
-        day: parseInt(currentDate.getDate())
-    }
-    const dateArray = date.split("-")
-    const dateObject = {
-        year: parseInt(dateArray[0]),
-        month: parseInt(dateArray[1]),
-        day: parseInt(dateArray[2])
-    }
 
-    if (dateObject.year < currDateObject.year) {
-        if (showAlert) {
-            alert("The date of the note can't be before the current year");
-        }
-        return false;
-    }
-    else if (dateObject.year === currDateObject.year) {
-        if (dateObject.month < currDateObject.month) {
-            if (showAlert) {
-                alert("The date of the note can't be before the current month");
-            }
-            return false;
-        }
-        else if (dateObject.month === currDateObject.month) {
-            if (dateObject.day < currDateObject.day) {
-                if (showAlert) {
-                    alert("The date of the note can't be before the current day");
-                }
-                return false;
-            }
-        }
-    }
-    return true;
+function clearForm() {
+    document.getElementById("form-text").value = "";
+    document.getElementById("date-input").value = "";
+    document.getElementById("time-input").value = "";
 }
 
 function addNote() {
@@ -110,7 +122,7 @@ function addNote() {
         return;
     }
     if (dateInput === "") {
-        alert("in order to add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
+        alert("To add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
         return;
     }
     const checkDate = validateDate(dateInput, true);
@@ -120,22 +132,24 @@ function addNote() {
         clearForm();
 
     }
+    else {
+        alert("The date of the note can't be before the current day :-)");
+        return;
+    }
 
 }
 function createId() {
 
-    let randomSmallLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // because an id in an element can't have a number as a first letter 
+    const randomSmallLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // because an id in an element can't have a number as a first letter 
     //so we need the first values in the id to be a letter
     console.log();
-    return randomSmallLetter + Math.random().toString(36).substr(2);
+    return randomSmallLetter + Math.random().toString(36).substr(2); // [a-z](a-z1-9)*
 
 }
 function saveToLocalStorage(noteText, noteDate, noteTime) {
 
     // giving each note a unique id so it can be used later,e.g.:removal of the note. 
     const noteId = createId();
-
-
 
     const note = {
         nid: noteId,
@@ -156,19 +170,6 @@ function saveToLocalStorage(noteText, noteDate, noteTime) {
 
 }
 
-function onLoad() {
-
-    const jsonArray = localStorage.getItem("notes");
-    if (!jsonArray) return;
-
-    const notes = JSON.parse(jsonArray);
-
-    for (const note of notes) {
-        showOnLoadNotes(note);
-    }
-
-
-}
 function deleteNote(noteDiv) {
     //the noteDiv is the parent element of the whole note, we take it's id and remove it from local storage and remove the element from the
     // body of the page. 
@@ -190,5 +191,19 @@ function deleteFromLocalStorage(id) {
     }
     localStorage.removeItem("notes");
     localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function onLoad() {
+
+    const jsonArray = localStorage.getItem("notes");
+    if (!jsonArray) return;
+
+    const notes = JSON.parse(jsonArray);
+
+    for (const note of notes) {
+        showOnLoadNotes(note);
+    }
+
+
 }
 onLoad()

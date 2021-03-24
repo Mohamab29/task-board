@@ -20,37 +20,28 @@
 
 <body>
     <div class="container-fluid ">
-        <div class="row d-flex justify-content-center title m-5">
-
+        <div class="row d-flex justify-content-center m-5">
             <div class="col-6 d-flex justify-content-center">
-                <!-- <div class="col-6 d-flex justify-content-center "> -->
-                    <h1 id="board-title">My task board</h1>
-                <!-- </div> -->
+                <h1 id="board-title">My task board</h1>
             </div>
         </div>
-        <div class="row  d-flex justify-content-center">
-            <div class="col-6 d-flex justify-content-center">
-                <!-- <div class="col-6 form-container"> -->
-                <textarea id="form-text"></textarea>
-                <!-- </div> -->
+        <form>
+            <div class="row  d-flex justify-content-center">
+                <div class="col-6 d-flex justify-content-center">
+                    <textarea id="form-text"></textarea>
+                </div>
             </div>
-        </div>
-
-        <div class="row  d-flex justify-content-center m-2">
-            <div class="col-6 d-flex  form-buttons ">
-                <button type="button" class="btn btn-dark " onclick="addNote()">Add note</button>
-                <input type="date" id="date-input" class="btn btn-dark">
-                <input type="time" id="time-input" class="btn btn-dark">
-                <button type="button" class="btn btn-dark " onclick="clearForm()">Clear</button>
+            <div class="row  d-flex justify-content-center m-2">
+                <div class="col-6 d-flex  form-buttons ">
+                    <button type="button" class="btn btn-dark " onclick="addNote()">Add note</button>
+                    <input type="date" id="date-input" class="btn btn-dark">
+                    <input type="time" id="time-input" class="btn btn-dark">
+                    <button type="button" class="btn btn-dark " onclick="clearForm()">Clear</button>
+                </div>
             </div>
-        </div>
-
-
-
+        </form>
         <div class="row  m-5" id="notes-board">
-
         </div>
-
     </div>
 </body>
 
