@@ -47,24 +47,87 @@ function validateTime(time) {
     return true;
 
 }
-function showOnLoadNotes(note) {
+
+function deleteNote(noteDiv) {
+    //the noteDiv is the parent element of the whole note, we take it's id and remove it from local storage and remove the element from the
+    // body of the page. 
+    deleteFromLocalStorage(noteDiv.id);
+    noteDiv.style.animation = "fadeOut 1s";
+    setTimeout(() => {
+        noteDiv.remove()
+    }, 1000);
+}
+
+function deleteFromLocalStorage(id) {
+    const jsonArray = localStorage.getItem("notes");
+    if (!jsonArray) return;
+    const notes = JSON.parse(jsonArray);
+
+    for (const note of notes) {
+        if (note.nid == id) {
+            const index = notes.indexOf(note);
+            if (index > -1) {
+                notes.splice(index, 1);
+            }
+        }
+    }
+    localStorage.removeItem("notes");
+    localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+function clearForm() {
+    document.getElementById("form-text").value = "";
+    document.getElementById("date-input").value = "";
+    document.getElementById("time-input").value = "";
+}
+
+function createId() {
+
+    const randomSmallLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // because an id in an element can't have a number as a first letter 
+    //so we need the first values in the id to be a letter
+    console.log();
+    return randomSmallLetter + Math.random().toString(36).substr(2); // [a-z](a-z1-9)*
+
+}
+function saveToLocalStorage(noteText, noteDate, noteTime) {
+
+    // giving each note a unique id so it can be used later,e.g.:removal of the note. 
+    const noteId = createId();
+
+    const note = {
+        nid: noteId,
+        body: noteText,
+        date: noteDate,
+        time: noteTime
+    }
+
+    let notes = [];
+    const jsonArray = localStorage.getItem("notes");
+    if (jsonArray) {
+        notes = JSON.parse(jsonArray);
+    }
+
+    notes.push(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
+    return note;
+
+}
+function creatNoteElement(note) {
     //if the task is from yesterday
     if (validateDate(note.date) && validateTime(note.time)) {
-        const notesBoard = document.getElementById("notes-board");
         note.body = note.body.replaceAll("\n", "<br>");//FOR ADDING NEW LINE
-        notesBoard.innerHTML += `
-    <div class="note" id="${note.nid}">
-        <i class="fa fa-minus" onclick="deleteNote(${note.nid})" ></i>
-        <div class="note-body">
-            ${note.body}
-        </div>
-        <div class="row note-footer">
-            ${note.date}
-            <br>
-            ${note.time}    
-        </div>
-    </div>
-    `;
+        return `
+            <div class="note" id="${note.nid}">
+                <i class="fa fa-minus" onclick="deleteNote(${note.nid})" ></i>
+                <div class="note-body">
+                    ${note.body}
+                </div>
+                <div class="row note-footer">
+                    ${note.date}
+                    <br>
+                    ${note.time}    
+                </div>
+            </div>`;
     }
     else {
         deleteFromLocalStorage(note.nid);
@@ -101,11 +164,6 @@ function showNote(note) {
 }
 
 
-function clearForm() {
-    document.getElementById("form-text").value = "";
-    document.getElementById("date-input").value = "";
-    document.getElementById("time-input").value = "";
-}
 
 function addNote() {
     /*
@@ -125,7 +183,7 @@ function addNote() {
         alert("To add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
         return;
     }
-    const checkDate = validateDate(dateInput, true);
+    const checkDate = validateDate(dateInput);
     if (checkDate) {
         const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
@@ -138,60 +196,6 @@ function addNote() {
     }
 
 }
-function createId() {
-
-    const randomSmallLetter = String.fromCharCode(97 + Math.floor(Math.random() * 26)); // because an id in an element can't have a number as a first letter 
-    //so we need the first values in the id to be a letter
-    console.log();
-    return randomSmallLetter + Math.random().toString(36).substr(2); // [a-z](a-z1-9)*
-
-}
-function saveToLocalStorage(noteText, noteDate, noteTime) {
-
-    // giving each note a unique id so it can be used later,e.g.:removal of the note. 
-    const noteId = createId();
-
-    const note = {
-        nid: noteId,
-        body: noteText,
-        date: noteDate,
-        time: noteTime
-    }
-
-    let notes = [];
-    const jsonArray = localStorage.getItem("notes");
-    if (jsonArray) {
-        notes = JSON.parse(jsonArray);
-    }
-
-    notes.push(note);
-    localStorage.setItem("notes", JSON.stringify(notes));
-    return note;
-
-}
-
-function deleteNote(noteDiv) {
-    //the noteDiv is the parent element of the whole note, we take it's id and remove it from local storage and remove the element from the
-    // body of the page. 
-    deleteFromLocalStorage(noteDiv.id);
-    noteDiv.remove();
-}
-function deleteFromLocalStorage(id) {
-    const jsonArray = localStorage.getItem("notes");
-    if (!jsonArray) return;
-    const notes = JSON.parse(jsonArray);
-
-    for (const note of notes) {
-        if (note.nid == id) {
-            const index = notes.indexOf(note);
-            if (index > -1) {
-                notes.splice(index, 1);
-            }
-        }
-    }
-    localStorage.removeItem("notes");
-    localStorage.setItem("notes", JSON.stringify(notes));
-}
 
 function onLoad() {
 
@@ -199,11 +203,12 @@ function onLoad() {
     if (!jsonArray) return;
 
     const notes = JSON.parse(jsonArray);
-
+    let notesBoardContent = "";
     for (const note of notes) {
-        showOnLoadNotes(note);
+        notesBoardContent += creatNoteElement(note);
     }
 
-
+    const notesBoard = document.getElementById("notes-board");
+    notesBoard.innerHTML+=notesBoardContent;
 }
 onLoad()

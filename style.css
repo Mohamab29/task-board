@@ -55,9 +55,10 @@ body {
     justify-content: center;
     background: url("assets/images/notebg.png");
     background-size: 300px 400px;
-    animation-name: fadeIn;
+    animation: fadeIn;
     animation-duration: 2s;
     animation-fill-mode: both;
+    opacity:1;
 }
 
 @keyframes fadeIn {
@@ -66,6 +67,14 @@ body {
     }
     100% {
         opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
