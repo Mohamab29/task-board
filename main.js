@@ -64,7 +64,7 @@ function deleteFromLocalStorage(id) {
     const notes = JSON.parse(jsonArray);
 
     for (const note of notes) {
-        if (note.nid == id) {
+        if (note.nid === id) {
             const index = notes.indexOf(note);
             if (index > -1) {
                 notes.splice(index, 1);
@@ -122,7 +122,7 @@ function creatNoteElement(note) {
                 <div class="note-body">
                     ${note.body}
                 </div>
-                <div class="row note-footer">
+                <div class="note-footer">
                     ${note.date}
                     <br>
                     ${note.time}    
@@ -155,7 +155,7 @@ function showNote(note) {
 
     //adding the footer of the note
     const noteFooter = document.createElement("Div");
-    noteFooter.classList.add("row", "note-footer");
+    noteFooter.classList.add("note-footer");
     noteFooter.innerHTML = `${note.date}<br>${note.time}`;
     noteDiv.appendChild(noteFooter);
 
