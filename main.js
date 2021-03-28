@@ -186,15 +186,15 @@ function addNote() {
         alert("To add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
         return;
     }
-    const checkDate = validateDate(dateInput);
-    if (checkDate) {
+
+    if (validateDate(dateInput) && validateTime(timeInput)) {
         const note = saveToLocalStorage(noteText, dateInput, timeInput);
         showNote(note);
         clearForm();
 
     }
     else {
-        alert("The date of the note can't be before the current day :-)");
+        alert("The date of the note can't be before the current day,\nand the time (which is optional) to add cannot be before the current time :-)");
         return;
     }
 

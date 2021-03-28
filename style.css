@@ -39,8 +39,12 @@ body {
 }
 
 .form-buttons {
-    justify-content: space-evenly;
+    justify-content: center;
 }
+.form-buttons > *{
+    margin: 10px;
+}
+
 
 #note-board {
     margin-left: 200px !important;
