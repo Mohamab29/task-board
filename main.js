@@ -55,7 +55,7 @@ function deleteNote(noteDiv) {
     noteDiv.style.animation = "fadeOut 1s";
     setTimeout(() => {
         noteDiv.remove()
-    }, 1000);
+    }, 900);
 }
 
 function deleteFromLocalStorage(id) {
