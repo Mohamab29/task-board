@@ -171,10 +171,13 @@ function addNote() {
     When this function is called it checks if the textarea contains any text at all,
     and if the time to finish is added if not it will notify the user that he should a finish date and time, and press again. 
     */
-    const noteText = document.getElementById("form-text").value;
+    let noteText = document.getElementById("form-text").value;
     const dateInput = document.getElementById("date-input").value;
     const timeInput = document.getElementById("time-input").value;
 
+    if (!noteText.replace(/\s/g, "").length) {
+        noteText = "";
+    }
     if (noteText === "") {
         alert("You can't add an empty note!\nPlease enter a text in the box and don't forget to a due date :)");
         return;
