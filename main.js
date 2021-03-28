@@ -131,7 +131,7 @@ function creatNoteElement(note) {
     }
     else {
         deleteFromLocalStorage(note.nid);
-        return;
+        return "";
     }
 }
 function showNote(note) {
