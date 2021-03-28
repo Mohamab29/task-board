@@ -39,7 +39,7 @@ function validateTime(time) {
     if (currentHour > intHour) {
         return false;
     }
-    else if (currentHour == intHour) {
+    else if (currentHour === intHour) {
         if (currentMinutes > intMinutes) {
             return false;
         }
