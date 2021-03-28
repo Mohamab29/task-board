@@ -200,7 +200,7 @@ function addNote() {
 
 }
 
-function onLoad() {
+window.onload = () => {
 
     const jsonArray = localStorage.getItem("notes");
     if (!jsonArray) return;
@@ -214,4 +214,3 @@ function onLoad() {
     const notesBoard = document.getElementById("notes-board");
     notesBoard.innerHTML+=notesBoardContent;
 }
-onLoad()
