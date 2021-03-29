@@ -10,18 +10,15 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar {
     width: 10px;
 }
+
 textarea::-webkit-scrollbar {
     background-color: whitesmoke;
 }
-
-
 
 ::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
 }
-
-
 
 .container-fluid {
     justify-content: center;
@@ -57,7 +54,6 @@ textarea::-webkit-scrollbar {
     box-sizing: border-box;
     background: url("assets/images/formbg.jpg");
     background-attachment: local;
-    
 }
 
 .form-buttons {

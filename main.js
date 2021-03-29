@@ -5,7 +5,7 @@ function validateDate(date) {
         month: parseInt(currentDate.getMonth() + 1),
         day: parseInt(currentDate.getDate())
     }
-    const dateArray = date.split("-")
+    const dateArray = date.split("-");
     const dateObject = {
         year: parseInt(dateArray[0]),
         month: parseInt(dateArray[1]),
@@ -45,7 +45,12 @@ function validateTime(time) {
         }
     }
     return true;
+}
 
+function isToday(dateInput) {
+    const currentDate = new Date();
+    const dateObject = new Date(dateInput);
+    return dateObject.setHours(0, 0, 0, 0) === currentDate.setHours(0, 0, 0, 0);
 }
 
 function deleteNote(noteDiv) {
@@ -112,28 +117,6 @@ function saveToLocalStorage(noteText, noteDate, noteTime) {
     return note;
 
 }
-function creatNoteElement(note) {
-    //if the task is from yesterday
-    if (validateDate(note.date) && validateTime(note.time)) {
-        note.body = note.body.replaceAll("\n", "<br>");//FOR ADDING NEW LINE
-        return `
-            <div class="note" id="${note.nid}">
-                <i class="fa fa-minus" onclick="deleteNote(${note.nid})" ></i>
-                <div class="note-body">
-                    ${note.body}
-                </div>
-                <div class="note-footer">
-                    ${note.date}
-                    <br>
-                    ${note.time}    
-                </div>
-            </div>`;
-    }
-    else {
-        deleteFromLocalStorage(note.nid);
-        return "";
-    }
-}
 function showNote(note) {
     //creating note element
     const noteDiv = document.createElement("Div");
@@ -156,14 +139,16 @@ function showNote(note) {
     //adding the footer of the note
     const noteFooter = document.createElement("Div");
     noteFooter.classList.add("note-footer");
-    noteFooter.innerHTML = `${note.date}<br>${note.time}`;
+    const changeDate = (date) => {
+        const [year, month, day] = date.split('-');
+        return day + "/" + month + "/" + year;
+    }
+    noteFooter.innerHTML = `${changeDate(note.date)}<br>${note.time}`;
     noteDiv.appendChild(noteFooter);
 
     const notesBoard = document.getElementById("notes-board");
     notesBoard.appendChild(noteDiv);
 }
-
-
 
 function addNote() {
     /*
@@ -183,20 +168,23 @@ function addNote() {
         return;
     }
     if (dateInput === "") {
-        alert("To add your note to the board, you will need to choose a due date of when you will finish this task\nAdding a time is optional.");
+        alert("To add your note to the board, you will need to choose a due date of when you will finish this task.");
         return;
     }
 
-    if (validateDate(dateInput) && validateTime(timeInput)) {
-        const note = saveToLocalStorage(noteText, dateInput, timeInput);
-        showNote(note);
-        clearForm();
-
-    }
-    else {
-        alert("The date of the note can't be before the current day,\nand the time (which is optional) to add cannot be before the current time :-)");
+    if (!validateDate(dateInput)) {
+        alert("The date you have entered is not valid, please enter a valid one.");
         return;
     }
+
+    if (isToday(dateInput) && !validateTime(timeInput)) {
+        alert("the time to add (which is optional) cannot be before the current time if it is on the same day.");
+        return;
+    }
+
+    const note = saveToLocalStorage(noteText, dateInput, timeInput);
+    showNote(note);
+    clearForm();
 
 }
 
@@ -206,11 +194,16 @@ window.onload = () => {
     if (!jsonArray) return;
 
     const notes = JSON.parse(jsonArray);
-    let notesBoardContent = "";
-    for (const note of notes) {
-        notesBoardContent += creatNoteElement(note);
-    }
 
-    const notesBoard = document.getElementById("notes-board");
-    notesBoard.innerHTML+=notesBoardContent;
+    for (const note of notes) {
+        if (!validateDate(note.date)) {
+            deleteFromLocalStorage(note.nid);
+            continue;
+        }
+        if (isToday(note.date) && !validateTime(note.time)) {
+            deleteFromLocalStorage(note.nid);
+            continue;
+        }
+        showNote(note);
+    }
 }
